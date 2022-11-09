@@ -20,6 +20,7 @@ namespace TheZooShop.States
 
         public void Destroy()
         {
+            //open store;)
             throw new NotImplementedException();
         }
 

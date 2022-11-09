@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 namespace TheZooShop.States
 {
     public class Welcome : IState
-    {
+    {// u welcome the customer
+        //enter the store creates welcome state, say whats yout name and how muc hmoney you have;)
         private readonly ZooShopManager shop;
         public Welcome(ZooShopManager shop)
         {
@@ -22,14 +23,18 @@ namespace TheZooShop.States
         {
             throw new NotImplementedException();
         }
-
+        /NextCustomer();
         OpenStore();
         GreetCustomer();
         TakeCustomerName();
         ShowAnimals();
+        //buy animal
         ChooseAnimal();
-        InsertMoney(); //-> NotEnoughMoney(); - throw special exception here.
+        InsertMoney();
+        CheckIfYoucnaBuyit() //-> NotEnoughMoney(); - throw special exception here.
         BuyAnimal();
+        TipTheSeller();
+        NextCustomer();
         PlaywithAnimal();
         FeedAnimal();
         ExitShop()/EnterShopAgain();

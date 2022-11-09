@@ -21,6 +21,8 @@ namespace TheZooShop.States
         {
             throw new NotImplementedException();
         }
-
+        //choosvash animal, ako i dostatychno pari kupuvash trygvash
+        //eeventurallu buy and choose animal can be merged 
+        //you can tip the seler if u have enough money kupuvash i sledva nextCustomer() otnovo na welcome
     }
 }
