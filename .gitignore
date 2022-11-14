@@ -8,6 +8,7 @@
 *.elf
 *.obj
 [Oo]bj/
+.vscode/
 
 # Linker output
 *.ilk
@@ -52,3 +53,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.json
+*.cs
+AnimalNamesList.cs

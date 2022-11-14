@@ -14,15 +14,23 @@ namespace TheZooShop.States
         }
         public void Start()
         {
-            throw new NotImplementedException();
+            shop.display.ShowAnimals(shop.animals);
+            int index = shop.display.ChooseAnimal();
+            Animal chosenAnimal = shop.animals[index];
         }
 
         public void Destroy()
         {
             throw new NotImplementedException();
         }
+<<<<<<< Updated upstream
         //choosvash animal, ako i dostatychno pari kupuvash trygvash
         //eeventurallu buy and choose animal can be merged 
         //you can tip the seler if u have enough money kupuvash i sledva nextCustomer() otnovo na welcome
+=======
+
+        public void
+
+>>>>>>> Stashed changes
     }
 }
