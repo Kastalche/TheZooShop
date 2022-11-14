@@ -1,6 +1,6 @@
 namespace TheZooShop.States
 {
-    public enum State
+    public enum States
     {
         Init, Welcome, ChooseAnimal, BuyAnimal, PlayWithAnimal
     }

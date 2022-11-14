@@ -1,3 +1,7 @@
+using System.Data;
+using System.Net.Http;
+using Internal;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +12,37 @@ namespace TheZooShop.States
     public class Init : IState
     {
         private readonly ZooShopManager shop;
+
         Random random = new Random();
+
         public Init(ZooShopManager shop)
         {
             this.shop = shop;
         }
+
         public void Start()
         {
             AddAnimalsToShop();
+            ShowAnimals();
+            AddMoreAnimals();
+            OpenStore();
         }
 
         public void Destroy()
         {
-            //open store;)
-            throw new NotImplementedException();
+
         }
 
-        public void AddAnimalsToShop()
+        private void ShowAnimals()
+        {
+            System.Console.WriteLine("Right now in the shop there are {0} animals.", shop.animals.Count);
+            foreach (var animal in shop.animals)
+            {
+                System.Console.WriteLine(animal);
+            }
+        }
+
+        private void AddAnimalsToShop()
         {
             int numberOfAnimals = random.Next(1, shop.freePlacesForAnimals);
 
@@ -33,6 +51,41 @@ namespace TheZooShop.States
                 shop.animals.Add(CreateRandomAnimal());
                 shop.freePlacesForAnimals--;
             }
+        }
+
+        private void OpenStore(){
+            System.Console.WriteLine("Is the shop ready to be open?");
+            string input=Console.Readline();
+
+            if(input Is "Yes" or "yes")
+            {
+                System.Console.WriteLine("The Store is Open");
+                shop.Tranisition(Welcome);
+            }
+
+             else if(input Is "No" or "no"){
+                AddMoreAnimals();
+            }
+
+            else
+            {
+                System.Console.WriteLine("Please answer with Yes or No");
+                OpenStore();
+            }
+        }
+
+        private void AddMoreAnimals();
+        {
+            System.Console.WriteLine("Do you want to Add More animals?");
+            if(true)
+            {
+                shop.Transition(States.Init());
+            }
+            else
+            {
+                OpenStore();
+            }
+            
         }
 
 
@@ -58,7 +111,7 @@ namespace TheZooShop.States
 
         private string CreateRandomName()
         {
-            int randomIndex = random.Next(1, 11);
+            int randomIndex = random.Next(1, AnimalNames.Length+1);
             var randomName = (AnimalNames)randomIndex;
             return randomName.ToString();
             // return AnimalNames.[randomName].ToString();

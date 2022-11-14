@@ -7,61 +7,59 @@ namespace TheZooShop
 {
     public class ZooShopManager
     {
-        public int freePlacesForAnimals = 10;
+        private int freePlacesForAnimals{get;private set;}
+
+        private int profit;
+        public List<Animal> animals; 
+
+        public States currentState;
+        public Customer currentCustomer;
+
         Random random = new Random();
-        public List<Animal> animals = new List<Animal>();
 
-        public int profit;
-
-        public void GreetCustomer()
+        public ZooShopManager(int freePlacesForAnimals)
         {
-            System.Console.WriteLine("Right now in the shop we have {0} animals.", animals.Count);
+            this.freePlacesForAnimals=freePlacesForAnimals;
+
+            animals= new List<Animal>();
+            profit=0;
+
+            Transition(Init);
         }
 
-        public void ChooseAnimal()
-        {
+         public void Transition(States newState)
+    {
+        currentState?.Destroy();
 
+        switch (newState)
+        {
+            case States.Init:
+                currentState = new Init(this);
+                break;
+
+            case States.Welcome:
+                currentState = new Welcome(this);
+                break;
+
+            case States.ChooseAnimal:
+                currentState = new ChooseAnimal(this);
+                break;
+
+            case States.BuyAnimal:
+                currentState = new BuyAnimal(this);
+                break;
+
+            default:
+                throw new System.Exception($"Unknown State: {newState}");
         }
 
-        public void BuyAnimal()
-        {
+        currentState.Start();
+    }
 
-        }
+    // public void ShowShopProfit()
+    // {
+    //     System.Console.WriteLine();
+    // }
 
-        //     public void AddAnimalsToShop()
-        //     {
-        //         int numberOfAnimals = random.Next(1, freePlacesForAnimals);
-
-        //         for (int i = 0; i < numberOfAnimals; i++)
-        //         {
-        //             animals.Add(CreateRandomAnimal);
-        //         }
-        //     }
-
-        //     private Animal CreateRandomAnimal()
-        //     {
-        //         int typeAnimal = random.Next(1, 4);
-        //         int randomAge = random.Next(1, 15);
-        //         int randomPrice = random.Next(1, 500);
-
-        //         switch (typeAnimal)
-        //         {
-        //             case 1:
-        //                 return new Cat(randomAge, CreateRandomName(), randomPrice);
-        //             case 2:
-        //                 return new Dog(randomAge, CreateRandomName(), randomPrice);
-        //             case 3:
-        //                 return new Racoon(randomAge, CreateRandomName(), randomPrice);
-        //         }
-        //     }
-
-        //     private string CreateRandomName()
-        //     {
-        //         int randomName = random.Next(1, 11);
-        //         AnimalNames[randomName].ToString();
-        //     }
-
-
-        // }
     }
 }
