@@ -2,64 +2,69 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheZooShop.States;
 
 namespace TheZooShop
 {
     public class ZooShopManager
     {
-        private int freePlacesForAnimals{get;private set;}
+        public int freePlacesForAnimals { get; set; }
 
         private int profit;
-        public List<Animal> animals; 
+        public List<Animal> animals;
 
-        public States currentState;
+        #region DataHolders   //TODO: Exract in new class
+        public IState currentState;
         public Customer currentCustomer;
+        public Animal choosedAnimal;
+
+        #endregion
 
         Random random = new Random();
 
         public ZooShopManager(int freePlacesForAnimals)
         {
-            this.freePlacesForAnimals=freePlacesForAnimals;
+            this.freePlacesForAnimals = freePlacesForAnimals;
 
-            animals= new List<Animal>();
-            profit=0;
+            animals = new List<Animal>();
+            profit = 0;
 
-            Transition(Init);
+            Transition(State.Init);
         }
 
-         public void Transition(States newState)
-    {
-        currentState?.Destroy();
-
-        switch (newState)
+        public void Transition(State newState)
         {
-            case States.Init:
-                currentState = new Init(this);
-                break;
+            currentState?.Destroy();
 
-            case States.Welcome:
-                currentState = new Welcome(this);
-                break;
+            switch (newState)
+            {
+                case State.Init:
+                    currentState = new Init(this);
+                    break;
 
-            case States.ChooseAnimal:
-                currentState = new ChooseAnimal(this);
-                break;
+                case State.Welcome:
+                    currentState = new Welcome(this);
+                    break;
 
-            case States.BuyAnimal:
-                currentState = new BuyAnimal(this);
-                break;
+                case State.ChooseAnimal:
+                    currentState = new ChooseAnimal(this);
+                    break;
 
-            default:
-                throw new System.Exception($"Unknown State: {newState}");
+                case State.BuyAnimal:
+                    currentState = new BuyAnimal(this);
+                    break;
+
+                default:
+                    throw new System.Exception($"Unknown State: {newState}");
+            }
+
+            currentState.Start();
         }
 
-        currentState.Start();
-    }
-
-    // public void ShowShopProfit()
-    // {
-    //     System.Console.WriteLine();
-    // }
+        // public void ShowShopProfit()
+        // {
+        //     System.Console.WriteLine();
+        // }
 
     }
 }

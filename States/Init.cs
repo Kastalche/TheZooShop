@@ -1,6 +1,5 @@
 using System.Data;
 using System.Net.Http;
-using Internal;
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -53,17 +52,19 @@ namespace TheZooShop.States
             }
         }
 
-        private void OpenStore(){
+        private void OpenStore()
+        {
             System.Console.WriteLine("Is the shop ready to be open?");
-            string input=Console.Readline();
+            string input = Console.ReadLine();
 
-            if(input Is "Yes" or "yes")
+            if (input is "Yes" or "yes")
             {
                 System.Console.WriteLine("The Store is Open");
-                shop.Tranisition(Welcome);
+                shop.Transition(State.Welcome);
             }
 
-             else if(input Is "No" or "no"){
+            else if (input is "No" or "no")
+            {
                 AddMoreAnimals();
             }
 
@@ -74,18 +75,23 @@ namespace TheZooShop.States
             }
         }
 
-        private void AddMoreAnimals();
+        private void AddMoreAnimals()
         {
             System.Console.WriteLine("Do you want to Add More animals?");
-            if(true)
+            string input = Console.ReadLine();
+            if (input is "Yes" or "yes")
             {
-                shop.Transition(States.Init());
+                shop.Transition(State.Init);
             }
-            else
+            else if ((input is "No" or "no"))
             {
                 OpenStore();
             }
-            
+            else
+            {
+                System.Console.WriteLine("Please answer with Yes or No");
+                AddMoreAnimals();
+            }
         }
 
 
@@ -111,9 +117,9 @@ namespace TheZooShop.States
 
         private string CreateRandomName()
         {
-            int randomIndex = random.Next(1, AnimalNames.Length+1);
-            var randomName = (AnimalNames)randomIndex;
-            return randomName.ToString();
+            // int randomIndex = random.Next(1, AnimalNames.Length + 1);
+            // var randomName = (AnimalNames)randomIndex;
+            // return randomName.ToString();
             // return AnimalNames.[randomName].ToString();
         }
     }
