@@ -16,11 +16,16 @@ namespace TheZooShop.States
 
         public void Start()
         {
-            throw new NotImplementedException();
+
         }
         public void Destroy()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void BuyAnimal()
+        {
+            
         }
 
     }
