@@ -19,11 +19,12 @@ namespace TheZooShop.States
 
         public void Start()
         {
+            NewCustomer();
             GreetCustomer();
+
         }
         public void Destroy()
         {
-            throw new NotImplementedException();
         }
         public void NewCustomer()
         {
@@ -34,6 +35,7 @@ namespace TheZooShop.States
             int money = int.Parse(Console.ReadLine());
 
             Customer newCustomer = new Customer(name, money);
+            shop.currentCustomer = newCustomer;
             // TODO: SearchOption.currentCustomer = newCustomer;
         }
         // GreetCustomer();
@@ -55,8 +57,9 @@ namespace TheZooShop.States
         public void GreetCustomer()
         {
             System.Console.WriteLine("Okey then, {0}! Welcome to our zoo shop called Zooland. We are the first Console Aplication Shop in Varna! Nice to meet you.", shop.currentCustomer.Name);
-        }
-        //
+            shop.Transition(State.ChooseAnimal);
+            //
 
+        }
     }
 }

@@ -35,9 +35,10 @@ namespace TheZooShop.States
         private void ShowAnimals()
         {
             System.Console.WriteLine("Right now in the shop there are {0} animals.", shop.animals.Count);
-            foreach (var animal in shop.animals)
+            foreach (Animal animal in shop.animals)
             {
-                System.Console.WriteLine(animal);
+                string str = animal.ToString();
+                System.Console.WriteLine(str.Remove(0, 11));
             }
         }
 
@@ -117,10 +118,11 @@ namespace TheZooShop.States
 
         private string CreateRandomName()
         {
-            // int randomIndex = random.Next(1, AnimalNames.Length + 1);
-            // var randomName = (AnimalNames)randomIndex;
-            // return randomName.ToString();
-            // return AnimalNames.[randomName].ToString();
+            int randomIndex = random.Next(1, 14);
+            //var randomName = (AnimalNames)randomIndex;
+            var randomName = Enum.GetName(typeof(AnimalNames), randomIndex);
+            return randomName;
+            //return AnimalNames.[randomName].ToString();
         }
     }
 }

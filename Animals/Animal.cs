@@ -8,7 +8,7 @@ namespace TheZooShop
         public string Name { get; private set; }
         public int Price { get; private set; }
         public int Happiness { get; private set; }
-        protected string[] picture;
+        public string[] picture;
 
         public bool IsHappy;
 
@@ -28,6 +28,12 @@ namespace TheZooShop
             }
         }
         public abstract void GreetHuman();
+        public override string ToString()
+        {
+            var str = base.ToString();
+            str.Remove(0, 11);
+            return str;
 
+        }
     }
 }

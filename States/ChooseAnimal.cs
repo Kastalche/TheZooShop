@@ -16,6 +16,8 @@ namespace TheZooShop.States
         }
         public void Start()
         {
+            System.Console.WriteLine("These are the animals in our store. Feel free to choose wiych one u like most. When u are ready press enter the X. <3");
+            Thread.Sleep(5000);
             SelectMenu selectMenu = new SelectMenu(shop);
             selectMenu.ShowMenu();
             BuyAnimal();

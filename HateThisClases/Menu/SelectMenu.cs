@@ -19,7 +19,7 @@ namespace TheZooShop.Interface
         public void ShowMenu()
         {
 
-            for (int i = 0; i <= shop.animals.Count; i++)
+            for (int i = 0; i < shop.animals.Count; i++)
             {
                 var animal = shop.animals[i];
                 options.Add(new Option(animal.Name, animal.Age, animal.Price, () => SelectedAnimal(i)));
@@ -65,11 +65,12 @@ namespace TheZooShop.Interface
                 // Handle different action for the option
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
-                    int animalIndex = options[index].Selected.Invoke();
+                    //int animalIndex = options[index].Selected.Invoke();
                     shop.choosedAnimal = shop.animals[index];
                     newIndex = index;
                     index = 0;
                 }
+
             }
             while (keyinfo.Key != ConsoleKey.X);
 
@@ -84,10 +85,6 @@ namespace TheZooShop.Interface
 
         }
 
-        public void a()
-        {
-
-        }
         static void WriteMenu(List<Option> options, Option selectedOption)
         {
             Console.Clear();
