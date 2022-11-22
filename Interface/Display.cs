@@ -45,5 +45,36 @@ namespace TheZooShop
         {
             System.Console.WriteLine("Thank you for your purchase! Take good care of you pet!");
         }
+
+        public bool AskCustomer() // could be void bcz of th last row
+    {
+        string input = Console.ReadLine();
+    if (input is "Yes" or "yes")
+            {
+                return true;
+            }
+
+            else if (input is "No" or "no")
+            {
+                return false;
+            }
+            else 
+            {
+              System.Console.WriteLine("Please answer with Yes or No");
+                AskCustomer();
+            }
+            public void AskForContinue()
+        {
+            System.Console.WriteLine("Do you want to continue shopping in the shop? ");
+            //yes go to choose animal state, false 
+        }
+
+    }
+        public void GoodbyeToCustomer()
+        {
+            System.Console.WriteLine("Thanks For Shopping at our store, have a nice day!");
+        }
+
+
     }
 }

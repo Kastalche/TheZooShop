@@ -33,7 +33,6 @@ namespace TheZooShop
             var str = base.ToString();
             str.Remove(0, 11);
             return str;
-
         }
     }
 }
