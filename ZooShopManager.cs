@@ -8,6 +8,7 @@ namespace TheZooShop
 {
     public class ZooShopManager
     {
+        public readonly Display display;
         public int freePlacesForAnimals { get; set; }
 
         private int profit;
@@ -28,6 +29,7 @@ namespace TheZooShop
 
             animals = new List<Animal>();
             profit = 0;
+            display=new Display();
 
             Transition(State.Init);
         }

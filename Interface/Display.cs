@@ -1,3 +1,4 @@
+using Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace TheZooShop
     {
         public void AlertNotEnoughMoney(int targetPrice, int balance)
         {
-            throw new NotImplementedException();
+            //TODO:
         }
 
         public string AskCustomerForName()
@@ -38,7 +39,7 @@ namespace TheZooShop
 
         public void ShowAnimals(List<Animal> animals)
         {
-            throw new NotImplementedException();
+            //TODO:
         }
 
         public void ThankTheCustomer()
@@ -66,13 +67,20 @@ namespace TheZooShop
             public void AskForContinue()
         {
             System.Console.WriteLine("Do you want to continue shopping in the shop? ");
-            //yes go to choose animal state, false 
+            //TODO:yes go to choose animal state, false 
         }
 
     }
         public void GoodbyeToCustomer()
         {
             System.Console.WriteLine("Thanks For Shopping at our store, have a nice day!");
+        }
+
+        public void AskForMoney()
+        {
+            System.Console.WriteLine("How much money you have decided to spend for a pet?");
+            int money=int.Parse(Console.ReadLine());
+            return money;
         }
 
 
