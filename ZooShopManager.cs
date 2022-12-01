@@ -8,11 +8,14 @@ namespace TheZooShop
 {
     public class ZooShopManager
     {
-        public readonly Display display;
-        public int freePlacesForAnimals { get; set; }
+        Random random = new Random();
 
+        public readonly Display display;
+
+        public int freePlacesForAnimals { get; set; }
         private int profit;
         public List<Animal> animals;
+
 
         #region DataHolders   //TODO: Exract in new class
         public IState currentState;
@@ -21,7 +24,6 @@ namespace TheZooShop
 
         #endregion
 
-        Random random = new Random();
 
         public ZooShopManager(int freePlacesForAnimals)
         {
@@ -29,7 +31,7 @@ namespace TheZooShop
 
             animals = new List<Animal>();
             profit = 0;
-            display=new Display();
+            display = new Display();
 
             Transition(State.Init);
         }

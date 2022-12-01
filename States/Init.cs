@@ -55,24 +55,17 @@ namespace TheZooShop.States
 
         private void OpenStore()
         {
-            System.Console.WriteLine("Is the shop ready to be open?");
-            string input = Console.ReadLine();
+            System.Console.WriteLine("Is the shop ready to be open?")
 
-            if (input is "Yes" or "yes")
+            if (shop.display.AskCustomer())
             {
                 System.Console.WriteLine("The Store is Open");
                 shop.Transition(State.Welcome);
             }
 
-            else if (input is "No" or "no")
+            else if (shop.display.AskCustomer())
             {
                 AddMoreAnimals();
-            }
-
-            else
-            {
-                System.Console.WriteLine("Please answer with Yes or No");
-                OpenStore();
             }
         }
 

@@ -7,19 +7,15 @@ namespace TheZooShop
 {
     public interface IShopDisplay
     {
-        void OpenStore(int day);
-
-        void GreetCustomer(string name);
-
-        void ShowAnimals(List<Animal> animals);
+        string AskCustomerForName();
+        int AskCustomerForMoney();
+        bool AskCustomer();
 
         void AlertNotEnoughMoney(int targetPrice, int balance);
-
         void ThankTheCustomer();
-        
-
-        int ChooseAnimal();
-
-        string AskCustomerForName();
+        void GreetCustomer(string name);
+        void ShowAnimals(List<Animal> animals);
+        void AskForContinue();
+        void GoodbyeToCustomer();
     }
 }

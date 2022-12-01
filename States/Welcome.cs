@@ -20,7 +20,7 @@ namespace TheZooShop.States
         public void Start()
         {
             NewCustomer();
-            display.GreetCustomer();
+            shop.display.GreetCustomer(shop.currentCustomer.Name);
             shop.Transition(State.ChooseAnimal);
 
         }
@@ -30,12 +30,11 @@ namespace TheZooShop.States
 
         public void NewCustomer()
         {
-            string name = display.AskCustomerForName();
-            int money = AskForCustomerMoney();
+            string name = shop.display.AskCustomerForName();
+            int money = shop.display.AskCustomerForMoney();
 
             Customer newCustomer = new Customer(name, money);
             shop.currentCustomer = newCustomer;
-            // TODO: SearchOption.currentCustomer = newCustomer;
         }
     }
 }

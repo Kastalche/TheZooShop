@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TheZooShop.Interface;
+
 
 namespace TheZooShop.States
 {
@@ -64,8 +61,5 @@ namespace TheZooShop.States
         {
 
         }
-        //choosvash animal, ako i dostatychno pari kupuvash trygvash
-        //eeventurallu buy and choose animal can be merged 
-        //you can tip the seler if u have enough money kupuvash i sledva nextCustomer() otnovo na welcome
     }
 }

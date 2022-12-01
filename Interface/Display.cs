@@ -1,4 +1,4 @@
-using Internal;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,6 @@ namespace TheZooShop
 {
     public class Display : IShopDisplay
     {
-        public void AlertNotEnoughMoney(int targetPrice, int balance)
-        {
-            //TODO:
-        }
 
         public string AskCustomerForName()
         {
@@ -19,12 +15,33 @@ namespace TheZooShop
             string name = Console.ReadLine();
             return name;
         }
-
-        public int ChooseAnimal()
+        public int AskCustomerForMoney()
         {
-            System.Console.WriteLine("Enter the number of the Animal you want: ");
-            int number = int.Parse(Console.ReadLine());
-            return number;
+            System.Console.WriteLine("How much money you have decided to spend for a pet?");
+            int money = int.Parse(Console.ReadLine());
+            return money;
+        }
+        public bool AskCustomer() // could be void bcz of th last row
+        {
+            string input = Console.ReadLine();
+            if (input is "Yes" or "yes")
+            {
+                return true;
+            }
+
+            else if (input is "No" or "no")
+            {
+                return false;
+            }
+            else
+            {
+                System.Console.WriteLine("Please answer with Yes or No");
+                return AskCustomer();
+            }
+        }
+        public void AlertNotEnoughMoney(int targetPrice, int balance)
+        {
+            //TODO:
         }
 
         public void GreetCustomer(string name)
@@ -47,40 +64,14 @@ namespace TheZooShop
             System.Console.WriteLine("Thank you for your purchase! Take good care of you pet!");
         }
 
-        public bool AskCustomer() // could be void bcz of th last row
-    {
-        string input = Console.ReadLine();
-    if (input is "Yes" or "yes")
-            {
-                return true;
-            }
-
-            else if (input is "No" or "no")
-            {
-                return false;
-            }
-            else 
-            {
-              System.Console.WriteLine("Please answer with Yes or No");
-                AskCustomer();
-            }
-            public void AskForContinue()
+        public void AskForContinue()
         {
             System.Console.WriteLine("Do you want to continue shopping in the shop? ");
             //TODO:yes go to choose animal state, false 
         }
-
-    }
         public void GoodbyeToCustomer()
         {
             System.Console.WriteLine("Thanks For Shopping at our store, have a nice day!");
-        }
-
-        public void AskForMoney()
-        {
-            System.Console.WriteLine("How much money you have decided to spend for a pet?");
-            int money=int.Parse(Console.ReadLine());
-            return money;
         }
 
 

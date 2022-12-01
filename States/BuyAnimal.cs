@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheZooShop.Interface;
 
 namespace TheZooShop.States
 {
@@ -17,31 +18,31 @@ namespace TheZooShop.States
 
         public void Start()
         {
-
-            shop.Transition(nextCustomer);
+            OnAnimalSelected += SelectMenu.SelectedAnimal;
+            BuyTheAnimal();
+            PlayWithAnimal();
+            shop.display.AskForContinue();
+            shop.display.GoodbyeToCustomer();
+            shop.Transition(State.Welcome);
         }
         public void Destroy()
         {
-
+            OnAnimalSelected -= SelectMenu.SelectedAnimal;
         }
-
-        public void BuyAnimal()
+        void OnAnimalSelected()
         {
-            shop.currentCustomer.money-shop.chosenAnimal.price;
-            currentCustomer.pet.Add(shop.chosenAnimal);
-            shop.chosenAnimal=null;
-        }
 
-        private void AskForContinue()
+        }
+        public void BuyTheAnimal()
         {
-            System.Console.WriteLine("Do you want to continue shopping in the shop? ");
-            //yes go to choose animal state, false 
+            shop.currentCustomer.Money = shop.currentCustomer.Money - shop.choosedAnimal.Price;
+            shop.currentCustomer.pets.Add(shop.choosedAnimal);
+            shop.choosedAnimal = null;
         }
 
-        private void GoodbyeToCustomer()
+        public void PlayWithAnimal()
         {
-            System.Console.WriteLine("Thanks For Shopping at our store, have a nice day!");
+            //TODO:
         }
-
     }
 }
